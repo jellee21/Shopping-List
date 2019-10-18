@@ -1,0 +1,41 @@
+
+
+<html>
+  <head></head>
+  <body>
+    <input type = "text" id = "user">
+    <button onclick = "submitList()">SUBMIT</button>
+    <input type = "number" id = "removeNum">
+    <button onclick = "removeElement()">REMOVE</button>
+    <ol>
+      
+    </ol>
+    <script>
+      
+      function submitList() {
+        var newlist = document.createElement('li');
+        
+        var newText = document.createTextNode(document.getElementById('user').value);
+        //append text to the list
+        newlist.appendChild(newText);
+        var position = document.getElementsByTagName('ol')[0];
+        
+        position.appendChild(newlist);
+        document.getElementById('user').value = "";
+      }
+      
+      function removeElement() {
+        //get value of the removeNum field
+        var num = document.getElementById('removeNum').value;
+        //convert to a number
+        var y = parseInt(num);
+        //get child based on the number - 1
+        var child = document.getElementsByTagName('li')[y - 1];
+        //get parent
+        var parent = child.parentNode;
+        //remove child from parent
+        parent.removeChild(child);
+      }
+    </script>
+  </body>
+</html>
